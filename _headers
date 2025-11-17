@@ -6,3 +6,21 @@
 
 /*.js
   Content-Type: application/javascript
+
+/*.png
+  Content-Type: image/png
+
+/*.jpg
+  Content-Type: image/jpeg
+
+/*.jpeg
+  Content-Type: image/jpeg
+
+/*.svg
+  Content-Type: image/svg+xml
+
+/*.gif
+  Content-Type: image/gif
+
+/*.webp
+  Content-Type: image/webp
