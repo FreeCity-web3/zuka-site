@@ -1,1142 +1,1128 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.2">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zuka.life – Web, Bots & AI Agents</title>
+  <meta name="description" content="Zuka builds modern websites, apps, WhatsApp bots and AI agents that help businesses grow.">
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --card: #020617;
+      --accent: #4ade80;
+      --accent-soft: rgba(74, 222, 128, 0.08);
+      --accent-2: #22d3ee;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --radius-xl: 1.75rem;
+      --radius-lg: 1.1rem;
+      --shadow-soft: 0 28px 80px rgba(0,0,0,0.8);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 0% 0%, #22d3ee22 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, #4ade8022 0, transparent 55%),
+        radial-gradient(circle at 50% 120%, #a855f71f 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+      position: relative;
+    }
+
+    .page::before {
+      content: "";
+      position: fixed;
+      inset: 1.25rem;
+      border-radius: 2rem;
+      border: 1px solid rgba(248, 250, 252, 0.07);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0.8rem 1.4rem;
+      margin-bottom: 2.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: linear-gradient(120deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
+      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 1.1rem;
+      z-index: 50;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 1.1rem;
+      background:
+        conic-gradient(from 220deg, #4ade80, #22d3ee, #a855f7, #4ade80);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 14px 40px rgba(56,189,248,0.55);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 1rem;
+      background: radial-gradient(circle at 30% 0%, #e5e7eb 0, #020617 45%, #020617 100%);
+      opacity: 0.9;
+    }
+
+    .logo-mark span {
+      position: relative;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: #f9fafb;
+      letter-spacing: 0.06em;
+    }
+
+    .logo-text-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .logo-text-tagline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.7rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.18s ease-out;
+    }
+
+    nav a:hover::after { width: 100%; }
+
+    .nav-cta {
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at top right, rgba(56,189,248,0.2), transparent 60%);
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #e5e7eb;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-cta span {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent), var(--accent-2));
+      box-shadow: 0 0 14px rgba(74,222,128,0.9);
+    }
+
+    main { margin-top: 1.5rem; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 2.75rem;
+      align-items: center;
+      margin-bottom: 3.75rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.3rem 0.9rem 0.3rem 0.3rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.55);
+      background: rgba(15,23,42,0.92);
+      color: var(--text-muted);
+      font-size: 0.74rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .eyebrow-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #e5e7eb 0, #4ade80 35%, #22c55e 70%, #166534 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 26px rgba(34,197,94,0.6);
+      font-size: 0.72rem;
+      color: #020617;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 4.4vw, 3.4rem);
+      line-height: 1.03;
+      margin-bottom: 1.05rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero h1 span.highlight {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2), #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 34rem;
+      font-size: 0.98rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn-primary {
+      padding: 0.85rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #020617;
+      font-weight: 700;
+      font-size: 0.96rem;
+      box-shadow: 0 22px 40px rgba(34,197,94,0.55);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 26px 60px rgba(34,197,94,0.7);
+    }
+
+    .btn-secondary {
+      padding: 0.82rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.96);
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .btn-secondary span.icon {
+      font-size: 1.1rem;
+    }
+
+    .hero-footnote {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-footnote strong { color: #e5e7eb; }
+
+    .hero-footnote-divider {
+      width: 1px;
+      height: 14px;
+      background: rgba(148,163,184,0.7);
+    }
+
+    .hero-visual {
+      position: relative;
+      padding: 1.1rem;
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: 6%;
+      border-radius: 28px;
+      border: 1px dashed rgba(148,163,184,0.35);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 26px;
+      padding: 1.5rem 1.4rem 1.3rem;
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.3), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(74,222,128,0.23), transparent 60%),
+        #020617;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148,163,184,0.45);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "ZUKA OPS";
+      position: absolute;
+      top: 10px;
+      right: -40px;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(148,163,184,0.28);
+      transform: rotate(-14deg);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.78rem;
+    }
+
+    .chip {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.96);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(74,222,128,0.9);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-mini-card {
+      border-radius: 1rem;
+      padding: 0.7rem 0.85rem;
+      background: rgba(15,23,42,0.96);
+      border: 1px solid rgba(148,163,184,0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .hero-mini-label { color: var(--text-muted); font-size: 0.75rem; }
+    .hero-mini-value { font-weight: 600; font-size: 0.9rem; }
+    .hero-mini-pill { font-size: 0.7rem; color: #a5b4fc; }
+
+    .hero-status {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-status strong { color: #e5e7eb; }
+
+    .hero-status-bar {
+      flex: 1;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.92);
+      overflow: hidden;
+    }
+
+    .hero-status-bar span {
+      display: block;
+      width: 70%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    section {
+      margin-bottom: 3.7rem;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-heading h2 {
+      font-size: 1.45rem;
+    }
+
+    .section-heading p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 24rem;
+    }
+
+    .pill-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.96);
+      border: 1px solid rgba(148,163,184,0.6);
+      margin-bottom: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .pill-label::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(74,222,128,0.9);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .service-card {
+      border-radius: var(--radius-lg);
+      padding: 1.15rem 1rem;
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(74,222,128,0.16), transparent 60%),
+        var(--card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 16px 34px rgba(15,23,42,0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      font-size: 0.9rem;
+      transform-origin: center;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(244,244,245,0.35);
+      box-shadow: 0 24px 60px rgba(15,23,42,0.95);
+    }
+
+    .service-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 0.9rem;
+      background: rgba(15,23,42,0.96);
+      border: 1px solid rgba(148,163,184,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .service-title {
+      font-weight: 600;
+    }
+
+    .service-body {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .service-meta {
+      margin-top: auto;
+      font-size: 0.78rem;
+      color: #a5b4fc;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 0.65rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .list li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.55rem;
+      align-items: flex-start;
+    }
+
+    .list-bullet {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-2);
+      margin-top: 0.38rem;
+    }
+
+    .metric-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      font-size: 0.78rem;
+    }
+
+    .metric-pill {
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.96);
+      color: var(--text-muted);
+    }
+
+    .card {
+      border-radius: var(--radius-xl);
+      padding: 1.35rem 1.3rem;
+      background: radial-gradient(circle at top, rgba(15,23,42,1) 0, #020617 65%);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 22px 70px rgba(15,23,42,0.95);
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.85rem;
+      font-size: 0.85rem;
+    }
+
+    .step {
+      border-radius: 1rem;
+      padding: 0.8rem 0.85rem;
+      background: rgba(15,23,42,0.97);
+      border: 1px dashed rgba(148,163,184,0.65);
+      display: flex;
+      flex-direction: column;
+      gap: 0.28rem;
+    }
+
+    .step-index {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .step-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .step-body {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.55rem;
+      font-size: 0.75rem;
+    }
+
+    .badge {
+      padding: 0.22rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.97);
+      border: 1px solid rgba(148,163,184,0.6);
+      color: var(--text-muted);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1.7rem;
+      align-items: stretch;
+    }
+
+    form {
+      display: grid;
+      gap: 0.85rem;
+      font-size: 0.88rem;
+    }
+
+    label {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    label span {
+      font-size: 0.78rem;
+    }
+
+    input, textarea, select {
+      padding: 0.6rem 0.75rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148,163,184,0.85);
+      background: rgba(15,23,42,0.98);
+      color: #e5e7eb;
+      font: inherit;
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+
+    input::placeholder, textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .btn-submit {
+      margin-top: 0.45rem;
+      width: fit-content;
+    }
+
+    .contact-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .contact-aside strong { color: #e5e7eb; }
+
+    .contact-aside-row {
+      padding: 0.8rem 0.95rem;
+      border-radius: 1.1rem;
+      background: rgba(15,23,42,0.98);
+      border: 1px solid rgba(148,163,184,0.7);
+    }
+
+    footer {
+      margin-top: 1.2rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid rgba(15,23,42,0.9);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: space-between;
+    }
+
+    footer a { color: #9ca3af; }
+
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 1.4rem;
+      }
+
+      nav {
+        justify-content: space-between;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .process-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-grid, .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-inline: 1rem;
+      }
+
+      header {
+        padding-inline: 1rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 0.9rem;
+      }
+
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .process-steps {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero h1 { font-size: 2.25rem; }
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Zuka.life – Web, Bots &amp; AI Agents&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="description" content="Zuka builds modern websites, apps, WhatsApp bots and AI agents that help businesses grow."&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bg: #020617;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bg-alt: #020617;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--card: #020617;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent: #4ade80;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent-soft: rgba(74, 222, 128, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent-2: #22d3ee;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--text-main: #f9fafb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--text-muted: #9ca3af;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--border-subtle: rgba(148, 163, 184, 0.35);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--radius-xl: 1.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--radius-lg: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--shadow-soft: 0 28px 80px rgba(0,0,0,0.8);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>* { box-sizing: border-box; margin: 0; padding: 0; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at 0% 0%, #22d3ee22 0, transparent 55%),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at 100% 0%, #4ade8022 0, transparent 55%),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at 50% 120%, #a855f71f 0, #020617 55%, #000 100%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-main);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>-webkit-font-smoothing: antialiased;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>a { color: inherit; text-decoration: none; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.page {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 1200px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 2.5rem 1.5rem 4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.page::before {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>content: "";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: fixed;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>inset: 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(248, 250, 252, 0.07);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>pointer-events: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>z-index: -1;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>header {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.8rem 1.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 2.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148, 163, 184, 0.25);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(120deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 18px 40px rgba(15,23,42,0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(18px);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: sticky;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>top: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>z-index: 50;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-mark {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>conic-gradient(from 220deg, #4ade80, #22d3ee, #a855f7, #4ade80);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 14px 40px rgba(56,189,248,0.55);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>isolation: isolate;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-mark::after {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>content: "";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>inset: 1px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at 30% 0%, #e5e7eb 0, #020617 45%, #020617 100%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>opacity: 0.9;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-mark span {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 800;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.35rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #f9fafb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.06em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-text-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 800;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.05rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.16em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-text-tagline {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.14em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>nav {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.86rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>nav a {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-bottom: 0.15rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>nav a::after {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>content: "";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>bottom: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 2px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(90deg, var(--accent), var(--accent-2));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transition: width 0.18s ease-out;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>nav a:hover::after { width: 100%; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-cta {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.55rem 1.15rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148, 163, 184, 0.6);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at top right, rgba(56,189,248,0.2), transparent 60%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.12em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-cta span {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 7px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 7px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle, var(--accent), var(--accent-2));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 14px rgba(74,222,128,0.9);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>main { margin-top: 1.5rem; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 2.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 3.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.eyebrow {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.55rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.3rem 0.9rem 0.3rem 0.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.55);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.92);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.74rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.eyebrow-dot {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at 20% 0, #e5e7eb 0, #4ade80 35%, #22c55e 70%, #166534 100%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 10px 26px rgba(34,197,94,0.6);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.72rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #020617;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero h1 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(2.7rem, 4.4vw, 3.4rem);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.03;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.05rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.01em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero h1 span.highlight {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(120deg, var(--accent), var(--accent-2), #a855f7);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>-webkit-background-clip: text;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero p {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 34rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.98rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-ctas {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-primary {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.85rem 1.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, var(--accent), var(--accent-2));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #020617;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.96rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 22px 40px rgba(34,197,94,0.55);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.45rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.14em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-primary:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transform: translateY(-1px);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 26px 60px rgba(34,197,94,0.7);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-secondary {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.82rem 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.7);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.96);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-secondary span.icon {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-footnote {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-footnote strong { color: #e5e7eb; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-footnote-divider {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 1px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(148,163,184,0.7);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-visual {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-orbit {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>inset: 6%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 28px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px dashed rgba(148,163,184,0.35);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>opacity: 0.6;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>pointer-events: none;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 26px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1.5rem 1.4rem 1.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at top left, rgba(56,189,248,0.3), transparent 55%),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at bottom right, rgba(74,222,128,0.23), transparent 60%),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>#020617;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow-soft);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.45);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card::before {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>content: "ZUKA OPS";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>top: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>right: -40px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.65rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.3em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: rgba(148,163,184,0.28);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transform: rotate(-14deg);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card-header {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-chip-row {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.chip {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.25rem 0.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.7);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.96);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.chip-dot {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 7px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 7px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 12px rgba(74,222,128,0.9);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-grid {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-mini-card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.7rem 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.96);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.45);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-mini-label { color: var(--text-muted); font-size: 0.75rem; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-mini-value { font-weight: 600; font-size: 0.9rem; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-mini-pill { font-size: 0.7rem; color: #a5b4fc; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-status {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-status strong { color: #e5e7eb; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-status-bar {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex: 1;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 4px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.92);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-status-bar span {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 70%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(90deg, var(--accent), var(--accent-2));</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>section {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 3.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-heading {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: flex-end;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-heading h2 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.45rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-heading p {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 24rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.pill-label {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.25rem 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.96);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.6);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.14em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.pill-label::before {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>content: "";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 9px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 9px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 16px rgba(74,222,128,0.9);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.services-grid {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(4, minmax(0, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius-lg);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1.15rem 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 60%),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at bottom right, rgba(74,222,128,0.16), transparent 60%),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var(--card);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border-subtle);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 16px 34px rgba(15,23,42,0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.55rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transform-origin: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-card:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transform: translateY(-4px);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-color: rgba(244,244,245,0.35);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 24px 60px rgba(15,23,42,0.95);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-icon {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 32px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 32px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.96);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.7);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.15rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-meta {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #a5b4fc;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.two-col {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: flex-start;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.list {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>list-style: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.65rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.88rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.list li {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: auto minmax(0, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.55rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: flex-start;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.list-bullet {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 7px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 7px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--accent-2);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0.38rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.metric-row {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.metric-pill {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.35rem 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.7);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.96);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius-xl);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1.35rem 1.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at top, rgba(15,23,42,1) 0, #020617 65%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border-subtle);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 22px 70px rgba(15,23,42,0.95);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.card h3 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.05rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.45rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.process-steps {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(4, minmax(0, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.step {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.8rem 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.97);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px dashed rgba(148,163,184,0.65);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.28rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.step-index {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.12em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.step-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.step-body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.grid-3 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(3, minmax(0, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.badge-row {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.45rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0.55rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.badge {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.22rem 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.97);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.6);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-grid {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: stretch;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>form {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.88rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>label {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>label span {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>input, textarea, select {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.6rem 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.85);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.98);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font: inherit;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>textarea { min-height: 110px; resize: vertical; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>input::placeholder, textarea::placeholder {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #6b7280;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.form-row {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-submit {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0.45rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: fit-content;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-aside {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-aside strong { color: #e5e7eb; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-aside-row {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.8rem 0.95rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15,23,42,0.98);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148,163,184,0.7);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>footer {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 1.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 1.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid rgba(15,23,42,0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>footer a { color: #9ca3af; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 900px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>header {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>align-items: stretch;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 1.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>nav {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: minmax(0, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero-visual {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>order: -1;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.services-grid {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.process-steps {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.grid-3 {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.contact-grid, .two-col {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: minmax(0, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 640px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.page {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding-inline: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>header {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding-inline: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>nav {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>gap: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.services-grid {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: minmax(0, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.process-steps {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: minmax(0, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.grid-3 {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: minmax(0, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero h1 { font-size: 2.25rem; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="page"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;header&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="logo"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="logo-mark"&gt;&lt;span&gt;Z&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="logo-text-title"&gt;ZUKA&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="logo-text-tagline"&gt;Web. Bots. AI Agents.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;nav&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#services"&gt;Services&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#process"&gt;Process&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#work"&gt;Use Cases&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#contact"&gt;Contact&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#contact" class="nav-cta"&gt;&lt;span&gt;●&lt;/span&gt; Book a build sprint&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/nav&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;main&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section class="hero" id="top"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="eyebrow"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="eyebrow-dot"&gt;✓&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Ship-ready builds for teams that can’t wait 6 months.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>We build the</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="highlight"&gt;web, bots &amp;amp; AI agents&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>that actually launch.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Zuka is your product team on demand. We design and build conversion-ready websites, apps, WhatsApp automations, and agentic AI flows that plug directly into how your business makes money.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="hero-ctas"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Book a 20-min scoping call →</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn-secondary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'});"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="icon"&gt;▶&lt;/span&gt; View sample use cases</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="hero-footnote"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;&lt;strong&gt;From idea to live in weeks, not quarters.&lt;/strong&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="hero-footnote-divider"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;Web, WhatsApp, and AI – in one partner.&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero-visual"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="hero-orbit"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="hero-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-card-header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span&gt;Live System Snapshot&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span&gt;zuka.life&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-chip-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="chip"&gt;&lt;span class="chip-dot"&gt;&lt;/span&gt; Web &amp;amp; app builds&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="chip"&gt;WhatsApp automation&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="chip"&gt;AI agent workflows&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="hero-mini-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-label"&gt;Launch timeline&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-value"&gt;2–6 weeks&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-pill"&gt;Scoping → Design → Build&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="hero-mini-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-label"&gt;Channels in scope&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-value"&gt;Web · Mobile · WhatsApp&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-pill"&gt;One build, many touchpoints&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="hero-mini-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-label"&gt;Automation level&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-value"&gt;Rules + AI&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-pill"&gt;Agents that act, not just chat&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="hero-mini-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-label"&gt;Ideal for&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-value"&gt;Growing teams&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-mini-pill"&gt;Startups · SMEs · Creators&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-status"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span&gt;&lt;strong&gt;Build queue:&lt;/strong&gt; Now accepting projects for next month.&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="hero-status-bar"&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section id="services"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pill-label"&gt;What we build&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="section-heading"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2&gt;From your homepage to your AI agent – handled end to end.&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Zuka plugs into your roadmap, then ships the pieces you need most: a site that converts, flows that respond instantly, and AI agents that feel like part of your team.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="services-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="service-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="service-icon"&gt;◈&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="service-title"&gt;Websites &amp;amp; landing pages&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="service-body"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Strategy, copy, UX and development for marketing sites, product pages and funnels. Built to load fast, look sharp and tell your story clearly.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="service-meta"&gt;Ideal for launches, rebrands and campaigns.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="service-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="service-icon"&gt;⌘&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="service-title"&gt;Web &amp;amp; mobile apps&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="service-body"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Functional prototypes or production-ready tools for your customers and internal teams – dashboards, portals, booking systems and more.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="service-meta"&gt;From MVPs to v2 feature builds.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="service-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="service-icon"&gt;💬&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="service-title"&gt;WhatsApp bots &amp;amp; journeys&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="service-body"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Automate FAQs, lead capture, bookings and support in the channel your customers already use daily. Fully branded flows, human handoff built in.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="service-meta"&gt;Integrates with your CRM and tools.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="service-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="service-icon"&gt;⚙️&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="service-title"&gt;AI agents &amp;amp; integrations&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="service-body"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>We design agents that understand your data, trigger actions and complete tasks – not just chat. From support copilots to internal ops assistants.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="service-meta"&gt;OpenAI, LangChain, workflows &amp;amp; more.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section id="process"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pill-label"&gt;How we work&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="two-col"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="section-heading"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;h2&gt;A build partner, not just another "dev shop".&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>We care about your outcome: traffic turning into leads, leads into revenue, support tickets into satisfied customers. Our process is simple and predictable.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul class="list"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-bullet"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;strong&gt;Business-first scoping.&lt;/strong&gt; We start with your goals, constraints and tech stack, then propose the smallest project that can move the needle.</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-bullet"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;strong&gt;Design you can react to quickly.&lt;/strong&gt; We share wireframes and clickable prototypes fast so you can give feedback before we write a line of code.</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="list-bullet"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;strong&gt;Build, integrate, hand over.&lt;/strong&gt; We ship clean, documented builds and – if you want – stay on retainer to keep shipping iterations.</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="metric-row" style="margin-top:1rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="metric-pill"&gt;Typical projects: 2–8 weeks&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="metric-pill"&gt;Engagements: project or monthly retainer&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Our 4-step sprint model&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.8rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>A simple structure that keeps everyone aligned and your launch date real.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="process-steps"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="step"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-index"&gt;Step 01&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-title"&gt;Scope &amp;amp; architecture&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-body"&gt;60–90 minute workshop to map goals, flows, integrations and success metrics.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="step"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-index"&gt;Step 02&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-title"&gt;UX &amp;amp; copy&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-body"&gt;Wireframes and draft copy that make the experience and message concrete.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="step"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-index"&gt;Step 03&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-title"&gt;Build &amp;amp; connect&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-body"&gt;Front-end, back-end, WhatsApp flows and AI logic implemented and tested.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="step"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-index"&gt;Step 04&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-title"&gt;Launch &amp;amp; iterate&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-body"&gt;Deployment, handover, and an optional iteration sprint after real user feedback.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section id="work"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pill-label"&gt;Sample use cases&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="section-heading"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2&gt;What Zuka could ship for you in the next 60 days.&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Every project is custom, but most fall into a few patterns. Here is how we usually help teams move faster.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Service brand relaunch&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p style="font-size:0.86rem; color:var(--text-muted);"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>A fresh marketing site with case studies, pricing blocks and a contact flow that routes leads into your CRM and WhatsApp for immediate follow-up.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="badge-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge"&gt;New homepage + landing pages&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge"&gt;Lead capture → WhatsApp&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge"&gt;Analytics &amp;amp; tracking setup&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;WhatsApp-first sales funnel&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p style="font-size:0.86rem; color:var(--text-muted);"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>A guided WhatsApp journey that qualifies leads, books calls and answers FAQs 24/7, with a simple dashboard showing conversation volume and outcomes.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="badge-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge"&gt;Bot flows &amp;amp; templates&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge"&gt;CRM + calendar integration&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge"&gt;Human handover on edge cases&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;AI agent for operations&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p style="font-size:0.86rem; color:var(--text-muted);"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>An internal agent that can search SOPs, draft replies, generate reports and push updates into the tools your team already uses.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="badge-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge"&gt;Document ingestion&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge"&gt;Actionable workflows&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="badge"&gt;Secure access control&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section id="contact"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pill-label"&gt;Let&amp;apos;s build&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="section-heading"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2&gt;Tell us what you want live in the next 2–3 months.&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>A short brief is enough for us to respond with a rough scope, timeline and starting budget. No obligation, no hard sell.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="contact-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="form-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span&gt;Name&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;input type="text" name="name" placeholder="Your name" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span&gt;Company&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;input type="text" name="company" placeholder="Your company or project name"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="form-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span&gt;Email&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;input type="email" name="email" placeholder="you@example.com" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span&gt;Preferred channel&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;select name="channel"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value=""&gt;Select one&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option&gt;WhatsApp&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option&gt;Email&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option&gt;Telegram&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;What do you want to build?&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;select name="project-type"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;option value=""&gt;Select an option&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;option&gt;Website or landing pages&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;option&gt;Web or mobile app&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;option&gt;WhatsApp bot / automation&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;option&gt;AI agent or workflow&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;option&gt;Combination of the above&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/label&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;Tell us a bit more about your project&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;textarea name="details" placeholder="Where are you today and what would success look like in 3–6 months?" required&gt;&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/label&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;Rough timeline &amp;amp; budget (optional)&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="text" name="timeline" placeholder="Example: Launch by July, 5–15k budget range"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/label&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;button type="submit" class="btn-primary btn-submit"&gt;Send project brief →&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="contact-aside"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="contact-aside-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;strong&gt;Prefer to start with a chat?&lt;/strong&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Drop us a short message with a link to your current site (if any), and we&amp;apos;ll reply with one or two concrete ways we could help.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="contact-aside-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;strong&gt;Working with Zuka&lt;/strong&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>We work with founders, marketing teams and operators who care about clear communication and shipping value fast. If that&amp;apos;s you, we&amp;apos;ll get along well.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="contact-aside-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;strong&gt;Based online, building globally.&lt;/strong&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Zuka is a distributed team. We&amp;apos;re used to async collaboration, Loom updates and shipping across time zones.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;© &lt;span id="year"&gt;&lt;/span&gt; Zuka. All rights reserved.&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;Launch-ready web, WhatsApp and AI builds for growing teams.&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('year').textContent = new Date().getFullYear();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-mark"><span>Z</span></div>
+        <div>
+          <div class="logo-text-title">ZUKA</div>
+          <div class="logo-text-tagline">Web. Bots. AI Agents.</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#work">Use Cases</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta"><span>●</span> Book a build sprint</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div>
+          <div class="eyebrow">
+            <div class="eyebrow-dot">✓</div>
+            Ship-ready builds for teams that can’t wait 6 months.
+          </div>
+          <h1>
+            We build the
+            <span class="highlight">web, bots & AI agents</span>
+            that actually launch.
+          </h1>
+          <p>
+            Zuka is your product team on demand. We design and build conversion-ready websites, apps, WhatsApp automations, and agentic AI flows that plug directly into how your business makes money.
+          </p>
+          <div class="hero-ctas">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
+              Book a 20-min scoping call →
+            </button>
+            <button class="btn-secondary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'});">
+              <span class="icon">▶</span> View sample use cases
+            </button>
+          </div>
+          <div class="hero-footnote">
+            <span><strong>From idea to live in weeks, not quarters.</strong></span>
+            <span class="hero-footnote-divider"></span>
+            <span>Web, WhatsApp, and AI – in one partner.</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-orbit"></div>
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <span>Live System Snapshot</span>
+              <span>zuka.life</span>
+            </div>
+            <div class="hero-chip-row">
+              <span class="chip"><span class="chip-dot"></span> Web & app builds</span>
+              <span class="chip">WhatsApp automation</span>
+              <span class="chip">AI agent workflows</span>
+            </div>
+            <div class="hero-grid">
+              <div class="hero-mini-card">
+                <div class="hero-mini-label">Launch timeline</div>
+                <div class="hero-mini-value">2–6 weeks</div>
+                <div class="hero-mini-pill">Scoping → Design → Build</div>
+              </div>
+              <div class="hero-mini-card">
+                <div class="hero-mini-label">Channels in scope</div>
+                <div class="hero-mini-value">Web · Mobile · WhatsApp</div>
+                <div class="hero-mini-pill">One build, many touchpoints</div>
+              </div>
+              <div class="hero-mini-card">
+                <div class="hero-mini-label">Automation level</div>
+                <div class="hero-mini-value">Rules + AI</div>
+                <div class="hero-mini-pill">Agents that act, not just chat</div>
+              </div>
+              <div class="hero-mini-card">
+                <div class="hero-mini-label">Ideal for</div>
+                <div class="hero-mini-value">Growing teams</div>
+                <div class="hero-mini-pill">Startups · SMEs · Creators</div>
+              </div>
+            </div>
+            <div class="hero-status">
+              <span><strong>Build queue:</strong> Now accepting projects for next month.</span>
+              <div class="hero-status-bar"><span></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="pill-label">What we build</div>
+        <div class="section-heading">
+          <h2>From your homepage to your AI agent – handled end to end.</h2>
+          <p>
+            Zuka plugs into your roadmap, then ships the pieces you need most: a site that converts, flows that respond instantly, and AI agents that feel like part of your team.
+          </p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">◈</div>
+            <h3 class="service-title">Websites & landing pages</h3>
+            <p class="service-body">
+              Strategy, copy, UX and development for marketing sites, product pages and funnels. Built to load fast, look sharp and tell your story clearly.
+            </p>
+            <p class="service-meta">Ideal for launches, rebrands and campaigns.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">⌘</div>
+            <h3 class="service-title">Web & mobile apps</h3>
+            <p class="service-body">
+              Functional prototypes or production-ready tools for your customers and internal teams – dashboards, portals, booking systems and more.
+            </p>
+            <p class="service-meta">From MVPs to v2 feature builds.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">💬</div>
+            <h3 class="service-title">WhatsApp bots & journeys</h3>
+            <p class="service-body">
+              Automate FAQs, lead capture, bookings and support in the channel your customers already use daily. Fully branded flows, human handoff built in.
+            </p>
+            <p class="service-meta">Integrates with your CRM and tools.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3 class="service-title">AI agents & integrations</h3>
+            <p class="service-body">
+              We design agents that understand your data, trigger actions and complete tasks – not just chat. From support copilots to internal ops assistants.
+            </p>
+            <p class="service-meta">OpenAI, LangChain, workflows & more.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="pill-label">How we work</div>
+        <div class="two-col">
+          <div>
+            <div class="section-heading">
+              <h2>A build partner, not just another "dev shop".</h2>
+              <p>
+                We care about your outcome: traffic turning into leads, leads into revenue, support tickets into satisfied customers. Our process is simple and predictable.
+              </p>
+            </div>
+            <ul class="list">
+              <li>
+                <div class="list-bullet"></div>
+                <div>
+                  <strong>Business-first scoping.</strong> We start with your goals, constraints and tech stack, then propose the smallest project that can move the needle.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet"></div>
+                <div>
+                  <strong>Design you can react to quickly.</strong> We share wireframes and clickable prototypes fast so you can give feedback before we write a line of code.
+                </div>
+              </li>
+              <li>
+                <div class="list-bullet"></div>
+                <div>
+                  <strong>Build, integrate, hand over.</strong> We ship clean, documented builds and – if you want – stay on retainer to keep shipping iterations.
+                </div>
+              </li>
+            </ul>
+            <div class="metric-row" style="margin-top:1rem;">
+              <span class="metric-pill">Typical projects: 2–8 weeks</span>
+              <span class="metric-pill">Engagements: project or monthly retainer</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Our 4-step sprint model</h3>
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.8rem;">
+              A simple structure that keeps everyone aligned and your launch date real.
+            </p>
+            <div class="process-steps">
+              <div class="step">
+                <div class="step-index">Step 01</div>
+                <div class="step-title">Scope & architecture</div>
+                <div class="step-body">60–90 minute workshop to map goals, flows, integrations and success metrics.</div>
+              </div>
+              <div class="step">
+                <div class="step-index">Step 02</div>
+                <div class="step-title">UX & copy</div>
+                <div class="step-body">Wireframes and draft copy that make the experience and message concrete.</div>
+              </div>
+              <div class="step">
+                <div class="step-index">Step 03</div>
+                <div class="step-title">Build & connect</div>
+                <div class="step-body">Front-end, back-end, WhatsApp flows and AI logic implemented and tested.</div>
+              </div>
+              <div class="step">
+                <div class="step-index">Step 04</div>
+                <div class="step-title">Launch & iterate</div>
+                <div class="step-body">Deployment, handover, and an optional iteration sprint after real user feedback.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work">
+        <div class="pill-label">Sample use cases</div>
+        <div class="section-heading">
+          <h2>What Zuka could ship for you in the next 60 days.</h2>
+          <p>
+            Every project is custom, but most fall into a few patterns. Here is how we usually help teams move faster.
+          </p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Service brand relaunch</h3>
+            <p style="font-size:0.86rem; color:var(--text-muted);">
+              A fresh marketing site with case studies, pricing blocks and a contact flow that routes leads into your CRM and WhatsApp for immediate follow-up.
+            </p>
+            <div class="badge-row">
+              <span class="badge">New homepage + landing pages</span>
+              <span class="badge">Lead capture → WhatsApp</span>
+              <span class="badge">Analytics & tracking setup</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>WhatsApp-first sales funnel</h3>
+            <p style="font-size:0.86rem; color:var(--text-muted);">
+              A guided WhatsApp journey that qualifies leads, books calls and answers FAQs 24/7, with a simple dashboard showing conversation volume and outcomes.
+            </p>
+            <div class="badge-row">
+              <span class="badge">Bot flows & templates</span>
+              <span class="badge">CRM + calendar integration</span>
+              <span class="badge">Human handover on edge cases</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>AI agent for operations</h3>
+            <p style="font-size:0.86rem; color:var(--text-muted);">
+              An internal agent that can search SOPs, draft replies, generate reports and push updates into the tools your team already uses.
+            </p>
+            <div class="badge-row">
+              <span class="badge">Document ingestion</span>
+              <span class="badge">Actionable workflows</span>
+              <span class="badge">Secure access control</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="pill-label">Let&apos;s build</div>
+        <div class="section-heading">
+          <h2>Tell us what you want live in the next 2–3 months.</h2>
+          <p>
+            A short brief is enough for us to respond with a rough scope, timeline and starting budget. No obligation, no hard sell.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div class="card">
+            <form>
+              <div class="form-row">
+                <label>
+                  <span>Name</span>
+                  <input type="text" name="name" placeholder="Your name" required>
+                </label>
+                <label>
+                  <span>Company</span>
+                  <input type="text" name="company" placeholder="Your company or project name">
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <span>Email</span>
+                  <input type="email" name="email" placeholder="you@example.com" required>
+                </label>
+                <label>
+                  <span>Preferred channel</span>
+                  <select name="channel">
+                    <option value="">Select one</option>
+                    <option>WhatsApp</option>
+                    <option>Email</option>
+                    <option>Telegram</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                <span>What do you want to build?</span>
+                <select name="project-type">
+                  <option value="">Select an option</option>
+                  <option>Website or landing pages</option>
+                  <option>Web or mobile app</option>
+                  <option>WhatsApp bot / automation</option>
+                  <option>AI agent or workflow</option>
+                  <option>Combination of the above</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Tell us a bit more about your project</span>
+                <textarea name="details" placeholder="Where are you today and what would success look like in 3–6 months?" required></textarea>
+              </label>
+
+              <label>
+                <span>Rough timeline & budget (optional)</span>
+                <input type="text" name="timeline" placeholder="Example: Launch by July, 5–15k budget range">
+              </label>
+
+              <button type="submit" class="btn-primary btn-submit">Send project brief →</button>
+            </form>
+          </div>
+
+          <div class="contact-aside">
+            <div class="contact-aside-row">
+              <strong>Prefer to start with a chat?</strong>
+              <p>
+                Drop us a short message with a link to your current site (if any), and we&apos;ll reply with one or two concrete ways we could help.
+              </p>
+            </div>
+            <div class="contact-aside-row">
+              <strong>Working with Zuka</strong>
+              <p>
+                We work with founders, marketing teams and operators who care about clear communication and shipping value fast. If that&apos;s you, we&apos;ll get along well.
+              </p>
+            </div>
+            <div class="contact-aside-row">
+              <strong>Based online, building globally.</strong>
+              <p>
+                Zuka is a distributed team. We&apos;re used to async collaboration, Loom updates and shipping across time zones.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Zuka. All rights reserved.</span>
+      <span>Launch-ready web, WhatsApp and AI builds for growing teams.</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
+
