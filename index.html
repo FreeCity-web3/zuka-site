@@ -1,3 +1,5 @@
+Can you check where is the contact form sending information to 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1035,59 +1037,59 @@
         </div>
         <div class="contact-grid">
           <div class="card">
-            <form>
-              <form action="/api/contact" method="POST">
-  <div class="form-row">
-    <label>
-      <span>Name</span>
-      <input type="text" name="name" placeholder="Your name" required>
-    </label>
-    <label>
-      <span>Company</span>
-      <input type="text" name="company" placeholder="Your company or project name">
-    </label>
-  </div>
+            
+            <form action="/api/contact" method="POST">
 
-  <div class="form-row">
-    <label>
-      <span>Email</span>
-      <input type="email" name="email" placeholder="you@example.com" required>
-    </label>
-    <label>
-      <span>Preferred channel</span>
-      <select name="channel">
-        <option value="">Select one</option>
-        <option>WhatsApp</option>
-        <option>Email</option>
-        <option>Telegram</option>
-      </select>
-    </label>
-  </div>
+              <div class="form-row">
+                <label>
+                  <span>Name</span>
+                  <input type="text" name="name" placeholder="Your name" required>
+                </label>
+                <label>
+                  <span>Company</span>
+                  <input type="text" name="company" placeholder="Your company or project name">
+                </label>
+              </div>
 
-  <label>
-    <span>What do you want to build?</span>
-    <select name="projectType">
-      <option value="">Select an option</option>
-      <option>Website or landing pages</option>
-      <option>Web or mobile app</option>
-      <option>WhatsApp bot / automation</option>
-      <option>AI agent or workflow</option>
-      <option>Combination of the above</option>
-    </select>
-  </label>
+              <div class="form-row">
+                <label>
+                  <span>Email</span>
+                  <input type="email" name="email" placeholder="you@example.com" required>
+                </label>
+                <label>
+                  <span>Preferred channel</span>
+                  <select name="channel">
+                    <option value="">Select one</option>
+                    <option>WhatsApp</option>
+                    <option>Email</option>
+                    <option>Telegram</option>
+                  </select>
+                </label>
+              </div>
 
-  <label>
-    <span>Tell us a bit more about your project</span>
-    <textarea name="details" placeholder="Where are you today and what would success look like in 3–6 months?" required></textarea>
-  </label>
+              <label>
+                <span>What do you want to build?</span>
+                <select name="project-type">
+                  <option value="">Select an option</option>
+                  <option>Website or landing pages</option>
+                  <option>Web or mobile app</option>
+                  <option>WhatsApp bot / automation</option>
+                  <option>AI agent or workflow</option>
+                  <option>Combination of the above</option>
+                </select>
+              </label>
 
-  <label>
-    <span>Rough timeline & budget (optional)</span>
-    <input type="text" name="timeline" placeholder="Example: Launch by July, 5–15k budget range">
-  </label>
+              <label>
+                <span>Tell us a bit more about your project</span>
+                <textarea name="details" placeholder="Where are you today and what would success look like in 3–6 months?" required></textarea>
+              </label>
 
-  <button type="submit" class="btn-primary btn-submit">Send project brief →</button>
+              <label>
+                <span>Rough timeline & budget (optional)</span>
+                <input type="text" name="timeline" placeholder="Example: Launch by July, 5–15k budget range">
+              </label>
 
+              <button type="submit" class="btn-primary btn-submit">Send project brief →</button>
             </form>
           </div>
 
@@ -1126,5 +1128,3 @@
   </script>
 </body>
 </html>
-
-
