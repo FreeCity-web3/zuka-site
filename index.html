@@ -1,5 +1,3 @@
-Can you check where is the contact form sending information to 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -745,6 +743,42 @@ Can you check where is the contact form sending information to
       }
     }
 
+        .alert-success {
+      display: none;
+      margin-bottom: 1.2rem;
+      padding: 0.75rem 0.95rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(74, 222, 128, 0.7);
+      background: radial-gradient(circle at top left, rgba(74, 222, 128, 0.16), rgba(15, 23, 42, 0.98));
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+    }
+
+    .alert-success.visible {
+      /* use this class to show it */
+      display: flex;
+    }
+
+    .alert-dot {
+      margin-top: 0.2rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(74, 222, 128, 0.9);
+      flex-shrink: 0;
+    }
+
+    .alert-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+
     @media (max-width: 640px) {
       .page {
         padding-inline: 1rem;
@@ -1035,6 +1069,18 @@ Can you check where is the contact form sending information to
             A short brief is enough for us to respond with a rough scope, timeline and starting budget. No obligation, no hard sell.
           </p>
         </div>
+
+                <!-- Success message (hidden by default, shown when ?sent=1) -->
+        <div id="contact-success" class="alert-success" aria-live="polite">
+          <div class="alert-dot"></div>
+          <div>
+            <strong>Thanks, we got your brief.</strong>
+            <div class="alert-text">
+              We&apos;ll review it and get back to you with a scope and next steps.
+            </div>
+          </div>
+        </div>
+
         <div class="contact-grid">
           <div class="card">
             
@@ -1124,7 +1170,31 @@ Can you check where is the contact form sending information to
   </div>
 
   <script>
+    // Set year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Show success banner when ?sent=1 is present, then clean up URL
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var sent = params.get('sent');
+      var banner = document.getElementById('contact-success');
+
+      if (sent === '1' && banner) {
+        banner.classList.add('visible');
+
+        // Scroll to contact section so user sees the message
+        var contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Remove ?sent=1 from the URL so it doesn't show on refresh
+        params.delete('sent');
+        var newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '') + window.location.hash;
+        window.history.replaceState({}, '', newUrl);
+      }
+    })();
   </script>
 </body>
 </html>
+
